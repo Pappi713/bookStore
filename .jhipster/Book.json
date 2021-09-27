@@ -1,0 +1,44 @@
+{
+  "name": "Book",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pageNo",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "author",
+      "otherEntityRelationshipName": "book",
+      "relationshipName": "author"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "publisher",
+      "otherEntityRelationshipName": "book",
+      "relationshipName": "publisher"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "store",
+      "otherEntityRelationshipName": "book",
+      "relationshipName": "store",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "book",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210924111753"
+}

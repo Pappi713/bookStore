@@ -1,0 +1,38 @@
+entity Book{
+	title String
+    pageNo Long
+    
+}
+
+entity Author{
+	name String
+    age Integer
+    gender String
+}
+
+entity Store{
+	name String
+  	adress String
+}
+
+entity Publisher{
+	name String
+    location String
+}
+
+relationship ManyToMany{
+	Store{book(title)} to Book{store}
+}
+
+relationship ManyToOne{
+	Book{author} to Author{book}
+}
+
+relationship ManyToOne{
+	Book{publisher} to Publisher
+}
+
+
+
+
+

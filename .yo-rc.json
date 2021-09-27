@@ -42,6 +42,8 @@
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "enableGradleEnterprise": false,
-    "languages": ["en", "fr"]
+    "languages": ["en", "fr"],
+    "entities": ["Book", "Author", "Store", "Publisher"],
+    "lastLiquibaseTimestamp": 1632482276000
   }
 }

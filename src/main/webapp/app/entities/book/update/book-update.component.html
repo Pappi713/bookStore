@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-book-heading" data-cy="BookCreateUpdateHeading">Create or edit a Book</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pageNo">Page No</label>
+          <input type="number" class="form-control" name="pageNo" id="field_pageNo" data-cy="pageNo" formControlName="pageNo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_author">Author</label>
+          <select class="form-control" id="field_author" data-cy="author" name="author" formControlName="author">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="authorOption.id === editForm.get('author')!.value?.id ? editForm.get('author')!.value : authorOption"
+              *ngFor="let authorOption of authorsSharedCollection; trackBy: trackAuthorById"
+            >
+              {{ authorOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_publisher">Publisher</label>
+          <select class="form-control" id="field_publisher" data-cy="publisher" name="publisher" formControlName="publisher">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="publisherOption.id === editForm.get('publisher')!.value?.id ? editForm.get('publisher')!.value : publisherOption"
+              *ngFor="let publisherOption of publishersSharedCollection; trackBy: trackPublisherById"
+            >
+              {{ publisherOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
